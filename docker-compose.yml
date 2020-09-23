@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  message-producer:
+    build: message-producer/.
+    networks:
+      - message-net
+  redis:
+    image: "redis"
+    networks:
+      message-net:
+    ports:
+      - target: 6379
+        published: 12345
+networks:
+  message-net:
